@@ -59,12 +59,8 @@ export const Hero = ({ onStartHydro, onStartPlant }: { onStartHydro: () => void,
           <div className="inline-flex items-center gap-2 px-6 py-2 rounded-full bg-white/10 backdrop-blur-md text-white text-sm font-serif font-medium tracking-widest uppercase mb-6 border border-white/20 shadow-lg">
             <Globe size={16} className="text-hydro-cyan-light" /> EcoScan AI
           </div>
-          <h1 className="text-6xl lg:text-8xl font-serif leading-[0.95] mb-8 text-white drop-shadow-2xl">
-            Decoding the <span className="italic text-hydro-cyan-light">Language</span> of our Planet.
-          </h1>
           <p className="text-xl text-white/90 leading-relaxed mb-10 max-w-2xl font-medium drop-shadow-lg">
-            EcoScan AI leverages advanced computer vision to monitor water health and biodiversity, 
-            empowering researchers and citizens to protect our ecosystems.
+            Setiap tahun, jutaan orang keracunan dari air yang kelihatannya bersih dan ribuan lainnya dari tanaman yang kelihatannya biasa aja. Dua ancaman nyata, yang selama ini kita hadapi tanpa alat yang tepat.
           </p>
           
           <div className="flex flex-wrap justify-center gap-4">
