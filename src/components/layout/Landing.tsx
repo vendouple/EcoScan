@@ -1,0 +1,229 @@
+import React from 'react';
+import { motion } from 'motion/react';
+import { Leaf, Droplets, Info, ShieldCheck, Activity, Globe } from 'lucide-react';
+import { cn } from '../../lib/utils';
+import { GlowCard } from '../ui/spotlight-card';
+
+export const Navbar = ({ onNavigate }: { onNavigate: (page: 'home' | 'hydro' | 'plant' | 'thank-you') => void }) => {
+  return (
+    <nav className="fixed top-6 left-1/2 -translate-x-1/2 w-[calc(100%-3rem)] max-w-7xl z-50 bg-white/95 backdrop-blur-md rounded-[16px] shadow-sm border border-black/5">
+      <div className="px-6 h-16 flex items-center justify-between">
+        <div 
+          className="flex items-center gap-2 cursor-pointer" 
+          onClick={() => onNavigate('home')}
+        >
+          <div className="w-10 h-10 bg-gradient-to-br from-hydro-cyan to-hydro-cyan-light rounded-full flex items-center justify-center text-white shadow-lg shadow-hydro-cyan/20">
+            <Globe size={24} />
+          </div>
+        </div>
+        
+        <div className="hidden md:flex items-center gap-8">
+          <button 
+            onClick={() => onNavigate('hydro')}
+            className="text-sm font-medium hover:text-hydro-cyan transition-colors flex items-center gap-2"
+          >
+            <Droplets size={16} /> HydroScan
+          </button>
+          <button 
+            onClick={() => onNavigate('plant')}
+            className="text-sm font-medium hover:text-hydro-cyan transition-colors flex items-center gap-2"
+          >
+            <Leaf size={16} /> PlantScan
+          </button>
+        </div>
+      </div>
+    </nav>
+  );
+};
+
+export const Hero = ({ onStartHydro, onStartPlant }: { onStartHydro: () => void, onStartPlant: () => void }) => {
+  return (
+    <section className="relative w-full min-h-[90vh] overflow-hidden flex flex-col items-center justify-center pt-32 pb-20 px-6">
+      {/* Video Background */}
+      <video
+        src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260228_065522_522e2295-ba22-457e-8fdb-fbcd68109c73.mp4"
+        autoPlay
+        loop
+        muted
+        playsInline
+        className="absolute inset-0 w-full h-full object-cover z-0"
+      />
+
+      <div className="max-w-4xl mx-auto text-center relative z-10 w-full px-6">
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          className="flex flex-col items-center"
+        >
+          <div className="inline-flex items-center gap-2 px-6 py-2 rounded-full bg-white/10 backdrop-blur-md text-white text-sm font-serif font-medium tracking-widest uppercase mb-6 border border-white/20 shadow-lg">
+            <Globe size={16} className="text-hydro-cyan-light" /> EcoScan AI
+          </div>
+          <h1 className="text-6xl lg:text-8xl font-serif leading-[0.95] mb-8 text-white drop-shadow-2xl">
+            Decoding the <span className="italic text-hydro-cyan-light">Language</span> of our Planet.
+          </h1>
+          <p className="text-xl text-white/90 leading-relaxed mb-10 max-w-2xl font-medium drop-shadow-lg">
+            EcoScan AI leverages advanced computer vision to monitor water health and biodiversity, 
+            empowering researchers and citizens to protect our ecosystems.
+          </p>
+          
+          <div className="flex flex-wrap justify-center gap-4">
+            <button 
+              onClick={onStartHydro}
+              className="px-8 py-4 bg-hydro-cyan hover:bg-hydro-cyan-light text-hydro-blue-dark rounded-2xl font-bold hover:scale-[1.02] transition-all flex items-center gap-3 shadow-xl shadow-hydro-cyan/20"
+            >
+              <Droplets size={20} /> Launch HydroScan
+            </button>
+            <button 
+              onClick={onStartPlant}
+              className="px-8 py-4 bg-white/10 backdrop-blur-md border border-white/30 text-white rounded-2xl font-medium hover:bg-white/20 transition-colors flex items-center gap-3 shadow-sm"
+            >
+              <Leaf size={20} /> Try PlantScan
+            </button>
+          </div>
+        </motion.div>
+      </div>
+    </section>
+  );
+};
+
+export const AboutSection = () => {
+  return (
+    <section className="py-24 bg-hydro-cream px-6">
+      <div className="max-w-5xl mx-auto">
+        <div className="mb-16 text-center max-w-3xl mx-auto">
+          <h2 className="text-3xl md:text-4xl font-serif text-hydro-blue mb-6">Kenapa EcoScan AI?</h2>
+          <p className="text-lg text-hydro-blue/80 leading-relaxed">
+            Ide ini muncul dari satu pertanyaan sederhana: gimana caranya teknologi AI bisa beneran berguna buat kehidupan sehari-hari, bukan cuma buat hal-hal yang kelihatan canggih? Jawabannya ada di dua masalah nyata yang sering kita hadapi tapi sering diabaikan — air yang kita nggak yakin aman, dan tanaman yang kita nggak tahu berbahaya atau enggak. Makanya lahirlah website ini, dengan dua AI yang bisa langsung kasih jawaban hanya dari satu foto.
+          </p>
+        </div>
+
+        <div className="grid md:grid-cols-2 gap-8">
+          {/* HydroScan AI */}
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="bg-white rounded-[32px] p-8 shadow-xl shadow-hydro-blue/5 border border-hydro-sand/20"
+          >
+            <div className="flex items-center gap-4 mb-8">
+              <div className="w-14 h-14 rounded-2xl bg-blue-50 flex items-center justify-center text-hydro-blue">
+                <Droplets size={28} />
+              </div>
+              <h3 className="text-2xl font-display font-bold text-hydro-blue">HydroScan AI</h3>
+            </div>
+            <ul className="space-y-5">
+              {[
+                "Banyak orang, terutama di daerah terpencil, nggak punya akses ke uji lab air yang mahal",
+                "Pendaki, camper, dan traveler sering ragu apakah air di alam aman untuk diminum",
+                "Petani dan nelayan butuh cara cepat untuk ngecek kondisi air irigasi atau tambak mereka",
+                "Di situasi darurat (banjir, gempa), nggak ada waktu nunggu hasil lab — butuh jawaban cepat"
+              ].map((text, i) => (
+                <li key={i} className="flex gap-4 text-hydro-blue/80">
+                  <div className="mt-2 w-1.5 h-1.5 rounded-full bg-hydro-cyan shrink-0" />
+                  <span className="text-base leading-relaxed">{text}</span>
+                </li>
+              ))}
+            </ul>
+          </motion.div>
+
+          {/* PlantScan AI */}
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.2 }}
+            className="bg-white rounded-[32px] p-8 shadow-xl shadow-hydro-blue/5 border border-hydro-sand/20"
+          >
+            <div className="flex items-center gap-4 mb-8">
+              <div className="w-14 h-14 rounded-2xl bg-cyan-50 flex items-center justify-center text-hydro-cyan">
+                <Leaf size={28} />
+              </div>
+              <h3 className="text-2xl font-display font-bold text-hydro-blue">PlantScan AI</h3>
+            </div>
+            <ul className="space-y-5">
+              {[
+                "Anak-anak dan hewan peliharaan rentan menyentuh atau memakan tanaman berbahaya tanpa disadari",
+                "Pecinta alam, hikers, dan forager sering salah identifikasi tanaman liar yang bisa beracun",
+                "Orang tua dan guru butuh cara mudah untuk edukasi tentang tanaman di sekitar mereka",
+                "Banyak tanaman hias populer yang ternyata berbahaya, tapi mayoritas orang nggak tahu"
+              ].map((text, i) => (
+                <li key={i} className="flex gap-4 text-hydro-blue/80">
+                  <div className="mt-2 w-1.5 h-1.5 rounded-full bg-hydro-cyan shrink-0" />
+                  <span className="text-base leading-relaxed">{text}</span>
+                </li>
+              ))}
+            </ul>
+          </motion.div>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export const Features = () => {
+  const features = [
+    {
+      icon: <Droplets className="text-hydro-blue" />,
+      title: "HydroScan",
+      desc: "Analyze water bodies for turbidity, algal blooms, and pollution risks using computer vision.",
+      color: "bg-blue-50",
+      glowColor: "blue" as const
+    },
+    {
+      icon: <Leaf className="text-hydro-cyan" />,
+      title: "PlantScan",
+      desc: "Identify species instantly from photos of leaves, flowers, or bark to map local biodiversity.",
+      color: "bg-cyan-50",
+      glowColor: "blue" as const
+    },
+    {
+      icon: <Activity className="text-hydro-blue-light" />,
+      title: "Automated Scoring",
+      desc: "Get instant environmental health scores and risk assessments for rapid decision making.",
+      color: "bg-blue-50",
+      glowColor: "blue" as const
+    }
+  ];
+
+  return (
+    <section className="py-24 bg-white">
+      <div className="max-w-7xl mx-auto px-6">
+        <div className="text-center mb-16">
+          <h2 className="text-4xl font-serif text-hydro-blue mb-4">Precision Tools for a Greener Future</h2>
+          <p className="text-hydro-blue/60 max-w-2xl mx-auto">
+            Our platform combines cutting-edge AI with environmental science to provide 
+            accessible tools for conservation, education, and research.
+          </p>
+        </div>
+        
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {features.map((f, i) => (
+            <motion.div 
+              key={i}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: i * 0.1 }}
+              className="group h-full"
+            >
+              <GlowCard 
+                glowColor={f.glowColor} 
+                customSize={true} 
+                className="h-full bg-white/50 border border-hydro-sand/20 hover:border-transparent transition-all"
+              >
+                <div className="flex flex-col h-full">
+                  <div className={cn("w-14 h-14 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform", f.color)}>
+                    {f.icon}
+                  </div>
+                  <h3 className="text-xl font-display font-bold mb-3 text-hydro-blue">{f.title}</h3>
+                  <p className="text-sm text-hydro-blue/60 leading-relaxed">{f.desc}</p>
+                </div>
+              </GlowCard>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+};

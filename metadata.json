@@ -1,0 +1,7 @@
+{
+  "name": "EcoScan AI",
+  "description": "An elegant AI platform for environmental analysis, featuring HydroScan for water quality and PlantScan for biodiversity monitoring.",
+  "requestFramePermissions": [
+    "camera"
+  ]
+}

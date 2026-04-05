@@ -1,0 +1,42 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Inter:wght@100..900&family=JetBrains+Mono:wght@100..800&family=Space+Grotesk:wght@300..700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: "Cormorant Garamond", serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+  --font-display: "Space Grotesk", sans-serif;
+  
+  /* Primary Cyan Variations (Water) */
+  --color-hydro-cyan: #00B4D8;
+  --color-hydro-cyan-light: #48CAE4;
+  --color-hydro-cyan-dark: #0077B6;
+  
+  /* Primary Blue Variations (Deep Water) */
+  --color-hydro-blue: #03045E;
+  --color-hydro-blue-light: #023E8A;
+  --color-hydro-blue-dark: #000000;
+  
+  /* Neutrals */
+  --color-hydro-cream: #F4FAFC;
+  --color-hydro-sand: #D9E2E8;
+  --color-hydro-sand-light: #EBF0F4;
+}
+
+@layer base {
+  body {
+    @apply bg-hydro-cream text-hydro-blue font-sans antialiased;
+  }
+  
+  h1, h2, h3, h4 {
+    @apply font-serif tracking-tight;
+  }
+
+  .font-display {
+    @apply font-display tracking-tight;
+  }
+
+  .font-mono {
+    @apply font-mono tracking-tighter;
+  }
+}
